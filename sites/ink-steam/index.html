@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>墨と湯 · Ink & Steam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: #eadcc4;
+      color: #2a241c;
+      font-family: "Shippori Mincho", serif;
+      overflow-x: auto; overflow-y: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(90,70,40,.06) 1px, transparent 1px);
+      background-size: 7px 7px;
+    }
+    .scroll {
+      display: flex; height: 100vh; min-width: max-content;
+    }
+    .panel {
+      height: 100vh; display: flex; align-items: center;
+      padding: 8vh 6vw; flex: 0 0 auto;
+    }
+    .intro { width: 42vw; min-width: 320px; }
+    .vert {
+      writing-mode: vertical-rl;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      letter-spacing: .35em;
+      line-height: 1.6;
+      height: 72vh;
+    }
+    .small {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-size: .8rem; letter-spacing: .2em; margin-top: 1.5rem;
+    }
+    .small a { color: #c23b22; text-decoration: none; }
+    .art {
+      width: min(88vw, 1100px);
+      height: 78vh;
+      background: url("hero.jpg") center/cover no-repeat;
+      box-shadow: 0 20px 60px rgba(60,40,20,.18);
+      position: relative;
+    }
+    .seal {
+      position: absolute; right: 1.4rem; bottom: 1.4rem;
+      width: 28px; height: 28px; background: #c23b22;
+    }
+    .poem {
+      width: 24vw; min-width: 220px;
+      writing-mode: vertical-rl;
+      font-size: 1.35rem; line-height: 2; letter-spacing: .22em;
+      height: 64vh;
+    }
+    .hours {
+      width: 36vw; min-width: 280px;
+      font-family: "Zen Kaku Gothic New", sans-serif;
+    }
+    .hours h2 { font-family: "Shippori Mincho", serif; font-size: 1.8rem; margin-bottom: 1.2rem; }
+    .hours li { list-style: none; display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid #cbb79a; }
+    .hint {
+      position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+      font-family: "Zen Kaku Gothic New", sans-serif; font-size: .7rem; letter-spacing: .3em;
+      color: #8a7358;
+    }
+    @media (max-width: 800px) {
+      body { overflow: auto; }
+      .scroll { flex-direction: column; height: auto; }
+      .panel { height: auto; width: 100%; }
+      .intro, .poem, .hours { width: 88vw; writing-mode: horizontal-tb; height: auto; }
+      .art { width: 88vw; height: 52vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll" id="scroll">
+    <section class="panel intro">
+      <div>
+        <div class="vert">一碗の静けさ</div>
+        <p class="small"><a href="../../index.html">十の部屋 · 05</a> · ink & steam</p>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="art"></div>
+    </section>
+    <section class="panel">
+      <p class="poem">湯気は手紙になる。桜は返事を急がない。碗の縁だけが、今日という日を覚えている。</p>
+    </section>
+    <section class="panel">
+      <div class="hours">
+        <h2>席</h2>
+        <ul>
+          <li><span>朝の薄茶</span><span>7:00</span></li>
+          <li><span>沈黙の一服</span><span>11:00</span></li>
+          <li><span>雨の濃茶</span><span>16:00</span></li>
+          <li><span>月見</span><span>by lantern</span></li>
+        </ul>
+        <p class="small" style="margin-top:2rem">Four seats. No music. Steam is the conversation.</p>
+      </div>
+    </section>
+  </div>
+  <div class="hint">SCROLL SIDEWAYS</div>
+  <script>
+    const el = document.getElementById("scroll");
+    window.addEventListener("wheel", e => {
+      if (window.innerWidth > 800 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        window.scrollBy({ left: e.deltaY, behavior: "instant" });
+      }
+    }, { passive: false });
+  </script>
+</body>
+</html>

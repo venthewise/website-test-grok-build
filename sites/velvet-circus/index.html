@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VELVET CIRCUS — tonight only</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bungee&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #3b0710 url("hero.jpg") center/cover fixed;
+      color: #ffe9c4;
+      font-family: "Playfair Display", serif;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background: radial-gradient(circle at 50% 20%, transparent, rgba(40,0,8,.78) 70%), repeating-radial-gradient(circle at 50% -20%, rgba(255,215,140,.05) 0 2px, transparent 2px 40px);
+      pointer-events: none;
+    }
+    .wrap { position: relative; z-index: 1; padding: 1.2rem; }
+    .ticket {
+      max-width: 980px; margin: 0 auto;
+      border: 4px dashed #e8c36a;
+      background: linear-gradient(180deg, rgba(90,8,18,.92), rgba(28,4,8,.94));
+      padding: 1.4rem 1.6rem 2rem;
+    }
+    .row { display: flex; justify-content: space-between; align-items: center; font-family: Bungee, sans-serif; font-size: .7rem; letter-spacing: .16em; }
+    .row a { color: #e8c36a; text-decoration: none; }
+    h1 {
+      font-family: "Abril Fatface", serif;
+      font-size: clamp(3.4rem, 12vw, 8rem);
+      text-align: center; line-height: .85;
+      color: #ffd56a;
+      text-shadow: 6px 6px 0 #7a1020;
+      margin: 1rem 0 .4rem;
+    }
+    .sub { text-align: center; font-style: italic; font-size: 1.3rem; color: #ffb4c2; margin-bottom: 1.6rem; }
+    .acts {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+    }
+    .act {
+      background: #fff6e0; color: #4a1020;
+      padding: 1.2rem; min-height: 28vh;
+      transform: rotate(var(--r));
+      box-shadow: 8px 10px 0 #7a1020;
+      transition: transform .25s;
+    }
+    .act:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+    .act h2 { font-family: Bungee, sans-serif; font-size: .85rem; margin-bottom: .6rem; }
+    .act p { font-size: 1.05rem; }
+    .spotlight {
+      margin-top: 1.6rem; text-align: center;
+      font-family: Bungee, sans-serif; letter-spacing: .2em; color: #e8c36a;
+      animation: blink 1.6s steps(2, end) infinite;
+    }
+    @keyframes blink { 50% { opacity: .3; } }
+    @media (max-width: 800px) {
+      .acts { grid-template-columns: 1fr; }
+      .act { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="ticket">
+      <div class="row">
+        <a href="../../index.html">← TENFOLD 07</a>
+        <span>ADMIT ONE</span>
+        <span>SAWDUST & GOLD</span>
+      </div>
+      <h1>VELVET<br/>CIRCUS</h1>
+      <p class="sub">The tent remembers every gasp. The chairs are still waiting.</p>
+      <div class="acts">
+        <article class="act" style="--r:-4deg">
+          <h2>ACT I</h2>
+          <p>The Empty Ring. A spotlight that refuses to pick a body. Dust performing in your place.</p>
+        </article>
+        <article class="act" style="--r:3deg">
+          <h2>ACT II</h2>
+          <p>Rope & Tassel. Gold cord that once held a curtain, now holding its breath.</p>
+        </article>
+        <article class="act" style="--r:-2deg">
+          <h2>ACT III</h2>
+          <p>The Last Chair. Baroque, moth-eaten, reserved for whoever still believes in encore.</p>
+        </article>
+      </div>
+      <div class="spotlight">● TONIGHT ONLY ● DOORS NEVER CLOSED ●</div>
+    </div>
+  </div>
+</body>
+</html>

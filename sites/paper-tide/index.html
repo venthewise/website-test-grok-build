@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper Tide — Vol. III, The Swell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #efe6d4;
+      color: #1c1914;
+      font-family: Newsreader, serif;
+    }
+    a { color: #1c1914; }
+    .mast {
+      text-align: center; padding: 1.6rem 1rem .8rem;
+      border-bottom: 3px double #1c1914;
+    }
+    .mast a { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; text-decoration: none; }
+    .mast h1 { font-family: "Playfair Display", serif; font-size: clamp(3rem, 9vw, 7rem); letter-spacing: -.04em; }
+    .mast .rule { display: flex; justify-content: space-between; font-size: .75rem; margin-top: .4rem; text-transform: uppercase; letter-spacing: .12em; }
+    .spread {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 2rem;
+      padding: 2rem 6vw 4rem;
+      max-width: 1180px; margin: 0 auto;
+    }
+    figure { margin: 0 0 1.2rem; }
+    figure img { width: 100%; display: block; filter: sepia(.18) contrast(1.05); }
+    figcaption { font-size: .8rem; font-style: italic; color: #5a5346; margin-top: .4rem; }
+    h2 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; margin-bottom: 1rem; }
+    .lede::first-letter {
+      float: left; font-family: "Playfair Display", serif;
+      font-size: 5.6rem; line-height: .7; padding: .12em .12em 0 0;
+    }
+    .lede { font-size: 1.2rem; line-height: 1.55; }
+    .cols { columns: 2; column-gap: 1.6rem; margin-top: 1.2rem; font-size: 1.02rem; line-height: 1.55; }
+    aside { border-left: 1px solid #1c1914; padding-left: 1.4rem; }
+    blockquote {
+      font-family: "Playfair Display", serif; font-style: italic;
+      font-size: 1.7rem; line-height: 1.2; margin: 1rem 0 2rem;
+    }
+    .meta { font-size: .78rem; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 1.4rem; }
+    .notes p { margin-bottom: 1rem; font-size: .95rem; }
+    footer { border-top: 3px double #1c1914; text-align: center; padding: 1.2rem; font-size: .75rem; letter-spacing: .2em; }
+    @media (max-width: 800px) {
+      .spread, .cols { display: block; columns: 1; }
+      aside { border: 0; padding: 2rem 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="mast">
+    <a href="../../index.html">Tenfold · Room 03</a>
+    <h1>PAPER TIDE</h1>
+    <div class="rule"><span>Vol. III</span><span>The Swell Issue</span><span>Dawn Edition</span></div>
+  </header>
+  <main class="spread">
+    <article>
+      <figure>
+        <img src="hero.jpg" alt="A fishing boat beside a towering swell" />
+        <figcaption>Fig. 12 — Off the winter banks, before the light had a name. Photograph by the tide itself.</figcaption>
+      </figure>
+      <h2>The boat that waited for the mountain of water.</h2>
+      <p class="lede">They went out because the charts still called it a moderate sea, and because hunger has always been a better compass than caution. The swell arrived like a building walking.</p>
+      <div class="cols">
+        <p>Paper Tide is not a weather report. It is a magazine for people who measure their lives in fathoms and in the grain of old photographs. This issue is dedicated to the hour when foam looks like handmade paper, and a hull looks like a punctuation mark.</p>
+        <p>We printed this volume on stock that cockles if you breathe on it. Keep it away from actual water. Keep it close to windows. The photographs were exposed on large-format film, then scanned as if they were evidence.</p>
+        <p>There is a theory, half-serious, that every great wave is a letter the ocean failed to send. We publish the ones that still have a boat in them.</p>
+      </div>
+    </article>
+    <aside>
+      <div class="meta">Field notes · 04:12</div>
+      <blockquote>“We were not brave. We were simply already there.”</blockquote>
+      <div class="notes">
+        <p><strong>Crew.</strong> Two. Yellow oilskins. Names withheld at their request — they said the wave already knew.</p>
+        <p><strong>Sound.</strong> Not a roar. A tearing of linen, then a cathedral organ with the bellows ripped out.</p>
+        <p><strong>After.</strong> The sea went polite again. Coffee from a dented flask. The red hull still red.</p>
+      </div>
+    </aside>
+  </main>
+  <footer>PRINTED ON THE TURNING OF THE TIDE · ROOM 03</footer>
+</body>
+</html>

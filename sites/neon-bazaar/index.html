@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEON BAZAAR — 03:17 district</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #07010f;
+      color: #e8f7ff;
+      font-family: "Share Tech Mono", monospace;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      pointer-events: none; position: fixed; inset: 0; z-index: 50;
+      background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.18) 2px 3px);
+      mix-blend-mode: multiply;
+    }
+    a { color: #ff2bd6; }
+    .marquee {
+      background: #ff2bd6; color: #07010f;
+      font-family: Orbitron, sans-serif; font-weight: 800;
+      white-space: nowrap; overflow: hidden; padding: .45rem 0;
+      letter-spacing: .2em; font-size: .8rem;
+    }
+    .marquee b { display: inline-block; animation: slide 18s linear infinite; }
+    .marquee.alt { background: #00f0ff; animation-direction: reverse; }
+    .marquee.alt b { animation-duration: 22s; animation-direction: reverse; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    header {
+      display: flex; justify-content: space-between; padding: .8rem 1.2rem;
+      border-bottom: 1px solid #ff2bd6;
+      font-size: .75rem;
+    }
+    .hero {
+      display: grid; grid-template-columns: .9fr 1.1fr;
+      min-height: 78vh; border-bottom: 1px solid #00f0ff;
+    }
+    .glitch {
+      padding: 8vh 6vw;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    h1 {
+      font-family: Orbitron, sans-serif; font-weight: 800;
+      font-size: clamp(2.4rem, 7vw, 5.6rem); line-height: .85;
+      text-transform: uppercase; position: relative; color: #fff;
+    }
+    h1::before, h1::after {
+      content: "NEON\A BAZAAR"; white-space: pre; position: absolute; left: 0; top: 0;
+    }
+    h1::before { color: #ff2bd6; clip-path: inset(0 0 55% 0); transform: translate(3px, -2px); }
+    h1::after { color: #00f0ff; clip-path: inset(55% 0 0 0); transform: translate(-3px, 2px); }
+    .glitch p { margin-top: 1.4rem; max-width: 36ch; color: #9befff; line-height: 1.6; }
+    .hero-img {
+      background: url("hero.jpg") center/cover no-repeat;
+      position: relative;
+    }
+    .hero-img::after {
+      content: "LIVE FEED // ALLEY 7";
+      position: absolute; bottom: 1rem; right: 1rem;
+      background: #00f0ff; color: #07010f; padding: .3rem .6rem; font-size: .7rem;
+    }
+    .stalls {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stall {
+      padding: 1.6rem; border: 1px solid #2a2040;
+      min-height: 28vh; transition: background .2s, color .2s, transform .2s;
+    }
+    .stall:hover { background: #ff2bd6; color: #07010f; transform: skew(-2deg); }
+    .stall h2 { font-family: Orbitron, sans-serif; font-size: .95rem; margin-bottom: .6rem; }
+    .yen { color: #00f0ff; }
+    .stall:hover .yen { color: #07010f; }
+    footer { padding: 1rem; font-size: .7rem; display: flex; justify-content: space-between; }
+    @media (max-width: 800px) {
+      .hero, .stalls { grid-template-columns: 1fr; }
+      .hero-img { min-height: 40vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee"><b>STEAM · SKEWERS · SYNTH · STOLEN WIFI · OPEN TILL THE RAIN STOPS · STEAM · SKEWERS · SYNTH · STOLEN WIFI · OPEN TILL THE RAIN STOPS · </b></div>
+  <header>
+    <a href="../../index.html">← TENFOLD / 02</a>
+    <span>GPS 35.6N · WET · 03:17</span>
+  </header>
+  <section class="hero">
+    <div class="glitch">
+      <h1>NEON<br/>BAZAAR</h1>
+      <p>The alley that never dried. Lanterns hung from stolen cable. If you can smell ozone and chili oil, you are already inside.</p>
+    </div>
+    <div class="hero-img"></div>
+  </section>
+  <div class="marquee alt"><b>NO CARDS · NO NAMES · NO PHOTOS OF THE COOKS · NO CARDS · NO NAMES · NO PHOTOS OF THE COOKS · </b></div>
+  <section class="stalls">
+    <article class="stall"><h2>STALL 04</h2><p>Electric dumpling. Filling cycles every hour.</p><p class="yen">¥400</p></article>
+    <article class="stall"><h2>STALL 11</h2><p>Bootleg firmware with extra MSG.</p><p class="yen">¥90</p></article>
+    <article class="stall"><h2>STALL 18</h2><p>Raincoat that glows when police ping nearby.</p><p class="yen">¥2,200</p></article>
+    <article class="stall"><h2>STALL 29</h2><p>Noodles that remember your last order.</p><p class="yen">¥650</p></article>
+  </section>
+  <footer>
+    <span>DISTRICT 7-B · UNAUTHORIZED MARKET</span>
+    <span>SIGNAL: STRONG / LEGAL: WEAK</span>
+  </footer>
+</body>
+</html>

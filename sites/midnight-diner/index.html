@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIDNIGHT DINER — always open</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0e;
+      color: #f4e9d8;
+      font-family: "Special Elite", system-ui;
+    }
+    canvas#rain { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .floor {
+      position: relative; z-index: 1;
+      background:
+        repeating-conic-gradient(#141418 0% 25%, #0c0c10 0% 50%) 0 0 / 36px 36px;
+      min-height: 100vh;
+    }
+    header {
+      display: flex; justify-content: space-between; padding: 1rem 1.2rem;
+      font-size: .85rem;
+    }
+    header a { color: #7af; text-decoration: none; }
+    .neon {
+      text-align: center; padding: 6vh 1rem 2rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(3.5rem, 14vw, 9rem);
+      letter-spacing: .08em;
+      color: #fff;
+      text-shadow:
+        0 0 6px #ff4d6d, 0 0 18px #ff4d6d, 0 0 42px #ff4d6d,
+        0 0 8px #7af, 0 0 24px #7af;
+      animation: flicker 5s infinite;
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 60%, 62%, 100% { opacity: 1; }
+      20%, 61% { opacity: .45; }
+    }
+    .open {
+      display: block; text-align: center;
+      font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: #7af;
+      text-shadow: 0 0 12px #7af; letter-spacing: .4em;
+    }
+    .booth {
+      max-width: 920px; margin: 2rem auto; padding: 0 1rem 4rem;
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.2rem;
+    }
+    .menu, .juke {
+      background: #1a0c10ee; border: 3px solid #c45; padding: 1.2rem;
+    }
+    .menu h2, .juke h2 { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: #ff6b81; }
+    .menu img { width: 100%; margin: .8rem 0; filter: contrast(1.05) saturate(1.1); }
+    .item { display: flex; justify-content: space-between; padding: .45rem 0; border-bottom: 1px dashed #633; }
+    .juke li { list-style: none; padding: .5rem 0; border-bottom: 1px solid #422; }
+    .juke li:hover { color: #7af; cursor: default; }
+    @media (max-width: 800px) { .booth { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <canvas id="rain"></canvas>
+  <div class="floor">
+    <header>
+      <a href="../../index.html">← tenfold 10</a>
+      <span>3:07 AM · rain · stool 4 empty</span>
+    </header>
+    <div class="neon">MIDNIGHT DINER</div>
+    <span class="open">OPEN</span>
+    <section class="booth">
+      <div class="menu">
+        <h2>TONIGHT'S TICKET</h2>
+        <img src="hero.jpg" alt="Rain-soaked diner at night" />
+        <div class="item"><span>Black coffee, no questions</span><span>$1.50</span></div>
+        <div class="item"><span>Cherry pie that survived the shift</span><span>$3.00</span></div>
+        <div class="item"><span>Eggs any style, regret optional</span><span>$6.75</span></div>
+        <div class="item"><span>A booth until the rain quits</span><span>free</span></div>
+      </div>
+      <div class="juke">
+        <h2>JUKEBOX</h2>
+        <ul>
+          <li>A1 · Blue vinyl weather</li>
+          <li>A2 · Last bus already left</li>
+          <li>B1 · Chrome rain</li>
+          <li>B2 · You can stay</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:.9rem;opacity:.75">The cook is humming something older than the neon. Leave the tip under the sugar.</p>
+      </div>
+    </section>
+  </div>
+  <script>
+    const c = document.getElementById("rain"), x = c.getContext("2d");
+    let w, h, drops;
+    function resize() {
+      w = c.width = innerWidth; h = c.height = innerHeight;
+      drops = Array.from({length: 90}, () => ({ x: Math.random()*w, y: Math.random()*h, l: 10+Math.random()*16, s: 8+Math.random()*10 }));
+    }
+    resize(); addEventListener("resize", resize);
+    (function draw() {
+      x.clearRect(0,0,w,h);
+      x.strokeStyle = "rgba(180,210,255,.35)"; x.lineWidth = 1;
+      drops.forEach(d => {
+        x.beginPath(); x.moveTo(d.x, d.y); x.lineTo(d.x-2, d.y+d.l); x.stroke();
+        d.y += d.s; d.x -= .6;
+        if (d.y > h) { d.y = -20; d.x = Math.random()*w; }
+      });
+      requestAnimationFrame(draw);
+    })();
+  </script>
+</body>
+</html>

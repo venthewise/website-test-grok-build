@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOLAR ARCHIVE — observatory 06</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050814;
+      color: #cfe6ff;
+      font-family: "IBM Plex Mono", monospace;
+      min-height: 100vh;
+    }
+    canvas { position: fixed; inset: 0; z-index: 0; }
+    .hud { position: relative; z-index: 1; }
+    header {
+      display: flex; justify-content: space-between; padding: 1rem 1.4rem;
+      border-bottom: 1px solid #1e3a5f;
+      font-size: .72rem; letter-spacing: .14em;
+    }
+    header a { color: #7ec8ff; text-decoration: none; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: calc(100vh - 48px);
+    }
+    .readout { padding: 6vh 5vw; }
+    .badge { color: #7ec8ff; font-size: .7rem; letter-spacing: .3em; }
+    h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: .9; margin: .8rem 0 1.2rem; color: #fff;
+    }
+    .readout p { max-width: 42ch; line-height: 1.65; color: #9bb8d8; }
+    .telemetry {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #1e3a5f; margin-top: 2rem;
+    }
+    .telemetry div { background: #050814; padding: 1rem; }
+    .telemetry strong { display: block; font-family: "Space Grotesk", sans-serif; font-size: 1.4rem; color: #fff; }
+    .scope {
+      margin: 4vh 4vw;
+      border: 1px solid #7ec8ff;
+      border-radius: 50%;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: url("hero.jpg") center/cover no-repeat;
+      box-shadow: 0 0 0 24px rgba(126,200,255,.05), 0 0 80px rgba(80,140,255,.2);
+      position: relative;
+    }
+    .cross, .cross::after {
+      content: ""; position: absolute; background: rgba(126,200,255,.45);
+    }
+    .cross { left: 50%; top: 8%; bottom: 8%; width: 1px; }
+    .cross::after { top: 50%; left: 8%; right: 8%; height: 1px; width: auto; }
+    .ring {
+      position: absolute; inset: 8%; border: 1px dashed rgba(126,200,255,.35); border-radius: 50%;
+      animation: spin 48s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .scope { margin: 0 12vw 8vh; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="hud">
+    <header>
+      <a href="../../index.html">← TENFOLD / ARC 06</a>
+      <span id="clock">00:00:00 UTC</span>
+      <span>DOME OPEN · SEEING 8/10</span>
+    </header>
+    <section class="grid">
+      <div class="readout">
+        <div class="badge">OBSERVATORY LOG</div>
+        <h1>SOLAR<br/>ARCHIVE</h1>
+        <p>We keep the night in folders. Each plate is a date the mountain agreed to be still. The dome is a verb.</p>
+        <div class="telemetry">
+          <div><span>AZIMUTH</span><strong id="az">142.08°</strong></div>
+          <div><span>ALTITUDE</span><strong id="alt">67.4°</strong></div>
+          <div><span>TARGET</span><strong>M31</strong></div>
+          <div><span>EXPOSURE</span><strong>480s</strong></div>
+        </div>
+      </div>
+      <div class="scope"><div class="ring"></div><div class="cross"></div></div>
+    </section>
+  </div>
+  <script>
+    const c = document.getElementById("stars"), x = c.getContext("2d");
+    const stars = Array.from({length: 180}, () => ({ x: Math.random(), y: Math.random(), r: Math.random()*1.4, p: Math.random()*Math.PI }));
+    function size() { c.width = innerWidth; c.height = innerHeight; }
+    size(); addEventListener("resize", size);
+    (function draw(t) {
+      x.clearRect(0,0,c.width,c.height);
+      stars.forEach(s => {
+        x.fillStyle = `rgba(200,220,255,${.35 + Math.sin(t/400 + s.p)*.35})`;
+        x.beginPath(); x.arc(s.x*c.width, s.y*c.height, s.r, 0, 7); x.fill();
+      });
+      requestAnimationFrame(draw);
+    })(0);
+    setInterval(() => {
+      document.getElementById("clock").textContent = new Date().toISOString().slice(11,19) + " UTC";
+      document.getElementById("az").textContent = (140 + Math.sin(Date.now()/8000)*4).toFixed(2) + "°";
+      document.getElementById("alt").textContent = (66 + Math.cos(Date.now()/9000)*2).toFixed(1) + "°";
+    }, 250);
+  </script>
+</body>
+</html>

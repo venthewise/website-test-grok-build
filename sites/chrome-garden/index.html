@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CHROME GARDEN — dew protocol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #061410;
+      color: #d7fff0;
+      font-family: Outfit, sans-serif;
+      overflow-x: hidden;
+    }
+    svg.blobs { position: fixed; inset: -20%; z-index: 0; filter: blur(40px); opacity: .55; }
+    a { color: #7dffc3; }
+    .shell { position: relative; z-index: 1; }
+    header {
+      display: flex; justify-content: space-between; padding: 1.2rem 1.6rem;
+      font-size: .78rem; letter-spacing: .18em;
+    }
+    .hero {
+      display: grid; place-items: center; min-height: 88vh; text-align: center; padding: 2rem;
+    }
+    h1 {
+      font-family: Syne, sans-serif; font-weight: 800;
+      font-size: clamp(3rem, 10vw, 7.5rem); line-height: .85;
+      background: linear-gradient(120deg, #fff, #7dffc3, #a8f);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .glass {
+      margin-top: 1.6rem;
+      display: inline-block;
+      padding: 1.2rem 1.4rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(125,255,195,.35);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      max-width: 42ch; text-align: left;
+    }
+    .photo {
+      width: min(92vw, 1100px); margin: 0 auto 8vh;
+      border-radius: 32px; overflow: hidden;
+      border: 1px solid rgba(125,255,195,.3);
+    }
+    .photo img { width: 100%; display: block; }
+    .cells {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      width: min(92vw, 1100px); margin: 0 auto 8vh;
+    }
+    .cell {
+      padding: 1.4rem; border-radius: 20px;
+      background: rgba(8,30,24,.55); border: 1px solid rgba(125,255,195,.2);
+      min-height: 22vh;
+    }
+    .cell h2 { font-family: Syne, sans-serif; margin-bottom: .5rem; }
+    @media (max-width: 800px) { .cells { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <svg class="blobs" viewBox="0 0 800 600" preserveAspectRatio="none">
+    <path fill="#0d6b55">
+      <animate attributeName="d" dur="12s" repeatCount="indefinite"
+        values="M420,80C540,90,700,180,690,310C680,450,520,520,360,500C200,480,90,360,110,230C130,100,300,70,420,80Z;
+                M380,60C530,40,720,160,700,300C680,460,500,560,330,520C160,480,40,340,80,210C120,80,250,80,380,60Z;
+                M420,80C540,90,700,180,690,310C680,450,520,520,360,500C200,480,90,360,110,230C130,100,300,70,420,80Z" />
+    </path>
+    <path fill="#5b3cff" opacity=".7">
+      <animate attributeName="d" dur="16s" repeatCount="indefinite"
+        values="M200,400C280,360,360,430,340,520C320,610,180,620,120,550C60,480,120,440,200,400Z;
+                M240,360C340,320,420,410,380,520C340,630,160,640,100,540C40,440,140,400,240,360Z;
+                M200,400C280,360,360,430,340,520C320,610,180,620,120,550C60,480,120,440,200,400Z" />
+    </path>
+  </svg>
+  <div class="shell">
+    <header>
+      <a href="../../index.html">TENFOLD · 09</a>
+      <span>DEW PROTOCOL v0.4</span>
+    </header>
+    <section class="hero">
+      <div>
+        <h1>CHROME<br/>GARDEN</h1>
+        <div class="glass">A greenhouse that learned to sweat in silver. Irrigation pipes as trellis. One droplet held in the air because the building asked it to stay.</div>
+      </div>
+    </section>
+    <div class="photo"><img src="hero.jpg" alt="Iridescent greenhouse with a suspended droplet" /></div>
+    <section class="cells">
+      <article class="cell"><h2>Monstera / 04</h2><p>Leaves wired with dew sensors. They glow when the humidity is honest.</p></article>
+      <article class="cell"><h2>Pipe choir</h2><p>Chrome irrigation sings at 18°C. You can hear water decide.</p></article>
+      <article class="cell"><h2>The held drop</h2><p>Not a leak. A resident. Please do not try to catch it.</p></article>
+    </section>
+  </div>
+</body>
+</html>
