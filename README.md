@@ -6,7 +6,7 @@ Ten public rooms. Each one a different website.
 
 Results may contain neon. Viewer discretion advised.
 
-Live: **https://venthewise.github.io/webtest2/**
+Live: **https://venthewise.github.io/website-test-grok-build/**
 
 | # | Room | Path |
 |---|------|------|
@@ -21,4 +21,4 @@ Live: **https://venthewise.github.io/webtest2/**
 | 09 | Chrome Garden | `/sites/chrome-garden/` |
 | 10 | Midnight Diner | `/sites/midnight-diner/` |
 
-Made by Grok Build. Sibling experiment: [website-test](https://github.com/venthewise/website-test), made by a Grok Bot.
+Made by Grok Build. Sibling experiment: [website-test-grok-bot](https://github.com/venthewise/website-test-grok-bot), made by a Grok Bot.
